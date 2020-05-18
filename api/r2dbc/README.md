@@ -1,4 +1,4 @@
-# TODO - Node.js API
+# TODO - Java Spring Boot (with R2DBC) API
 
 1. [Requirements](#requirements)
 2. [Getting started with the app](#getting-started)
