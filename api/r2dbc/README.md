@@ -30,7 +30,7 @@ database=todo
 clientSslCert=classpath:static/skysql_chain.pem
 ```
 
-**Configuring db.js**
+**Configuring MariaDBClient.java**
 
 The (database) environmental variables from `db.properties` are used within the [MariaDBClient.java](src/main/java/MariaDBClient.java) for the MariaDB R2DBC Connector configuration settings:
 
