@@ -28,7 +28,7 @@ user=DB0000XXXX
 password=*************
 ```
 
-**Configuring db.js**
+**Configuring MariaDBClient.java**
 
 The (database) environmental variables from `db.properties` are used within the [MariaDBClient.java](src/main/java/MariaDBClient.java) for the MariaDB R2DBC Connector configuration settings:
 
