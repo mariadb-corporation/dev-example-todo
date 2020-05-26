@@ -77,7 +77,7 @@ $ git clone https://github.com/mariadb-corporation/dev-example-todo.git
 ```sql
 CREATE DATABASE todo;
 
-CREATE TABLE tasks (
+CREATE TABLE todo.tasks (
   id INT(11) unsigned NOT NULL AUTO_INCREMENT,
   description VARCHAR(500) NOT NULL,
   completed BOOLEAN NOT NULL DEFAULT 0,
