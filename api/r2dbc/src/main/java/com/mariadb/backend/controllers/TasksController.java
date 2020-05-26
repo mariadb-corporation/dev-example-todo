@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import reactor.core.publisher.Flux;
 
 import com.mariadb.backend.models.Task;
 import com.mariadb.backend.services.TaskService;
@@ -25,7 +25,7 @@ public class TasksController {
     private TaskService service;
 
     @GetMapping()
-    public ResponseEntity<List<Task>> get() {
+    public ResponseEntity<Flux<Task>> get() {
         return ResponseEntity.ok(service.getAll());
     }
 

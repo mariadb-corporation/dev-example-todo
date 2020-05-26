@@ -1,8 +1,6 @@
 package com.mariadb.backend.repositories;
 
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ArrayList;
 
 import com.mariadb.backend.MariaDBClient;
 import com.mariadb.backend.models.Task;
@@ -15,41 +13,36 @@ import io.r2dbc.spi.Statement;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Repository()
+@Repository
 public class TasksRepository {
 
-    public List<Task> findAll() {
+    public Flux<Task> findAll() {
         Connection conn = null;
-        List<Task> tasks = null;
 
         try {
             conn = MariaDBClient.getConnection();
             Statement select = conn.createStatement("select * from todo.tasks");            
 
-            tasks = new ArrayList<Task>();
-
-            for (Task task : Flux.from(select.execute())
-               .flatMap(
-                  res -> res.map(
-                     (row, metadata) -> {
-                        int id = row.get(0, Integer.class);
-                        String description = row.get(1, String.class);
-                        Boolean completed = row.get(2, Boolean.class);
-                        return new Task(id,description,completed);
-                     })).toIterable()){
-                         tasks.add(task);
-                     }
+            return Flux.from(select.execute())
+                .flatMap(
+                    res -> res.map(
+                        (row, metadata) -> {
+                            int id = row.get(0, Integer.class);
+                            String description = row.get(1, String.class);
+                            Boolean completed = row.get(2, Boolean.class);
+                            return new Task(id,description,completed);
+                        })
+                    );
         } 
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return null;
         }
         finally {
             if (conn != null) {
                 conn.close();
             }
         }
-
-        return tasks;
     }
 
     public void insert(Task task) {
@@ -65,7 +58,7 @@ public class TasksRepository {
         }
         finally {
             if (conn != null) {
-                conn.close();
+                conn.close();//.subscribe();
             }
         }
     }

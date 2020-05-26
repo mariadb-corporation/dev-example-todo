@@ -1,12 +1,12 @@
 package com.mariadb.backend.services;
 
-import java.util.List;
-
 import com.mariadb.backend.models.Task;
 import com.mariadb.backend.repositories.TasksRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import reactor.core.publisher.Flux;
 
 @Service
 public class TaskService {
@@ -21,7 +21,7 @@ public class TaskService {
         return false;
     }
 
-    public List<Task> getAll() {
+    public Flux<Task> getAll() {
         return repository.findAll();
     }
 
