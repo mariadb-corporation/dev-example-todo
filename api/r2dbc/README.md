@@ -35,13 +35,13 @@ clientSslCert=classpath:static/skysql_chain.pem
 The (database) environmental variables from `db.properties` (located in resources/static/) are used within the [R2DBCConfig.java](src/main/java/com/mariadb/backend/config/R2DBCConfig.java) for the MariaDB R2DBC Connector configuration settings:
 
 ```java
-conf = MariadbConnectionConfiguration.builder()
-                    .host(props.getProperty("host"))
-                    .port(Integer.parseInt(props.getProperty("port")))
-                    .username(props.getProperty("username"))
-                    .password(props.getProperty("password"))
-                    .database(props.getProperty("database"))
-                    .build();
+MariadbConnectionConfiguration.builder()
+    .host(props.getProperty("host"))
+    .port(Integer.parseInt(props.getProperty("port")))
+    .username(props.getProperty("username"))
+    .password(props.getProperty("password"))
+    .database(props.getProperty("database"))
+    .build()
 ```
 
 **Configuring [R2DBCConfig.java](src/main/java/com/mariadb/backend/config/R2DBCConfig.java) for the MariaDB cloud database service [SkySQL](https://mariadb.com/products/skysql/)**
