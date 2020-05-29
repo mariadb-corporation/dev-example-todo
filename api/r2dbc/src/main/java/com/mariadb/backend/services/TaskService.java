@@ -5,8 +5,10 @@ import com.mariadb.backend.repositories.TasksRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class TaskService {
@@ -14,27 +16,34 @@ public class TaskService {
     @Autowired
     private TasksRepository repository;
 
-    public Boolean isValid(Task task) {
+    public Boolean isValid(final Task task) {
         if (task != null && !task.getDescription().isEmpty()) {
             return true;
         }
         return false;
     }
 
-    public Flux<Task> getAll() {
-        return repository.findAll();
+    public Flux<Task> getAllTasks() {
+        return this.repository.findAll();
     }
 
-    public void save(Task task) {
-        if (task.getId() > 0) {
-            repository.update(task);
-        }
-        else {
-            repository.insert(task);
-        }
+    public Mono<Task> createTask(final Task task) {
+        return this.repository.save(task);
     }
 
-    public void delete(int id) {
-        repository.delete(id);
+    @Transactional
+    public Mono<Task> updateTask(final Task task) {
+        return this.repository.findById(task.getId())
+                .flatMap(t -> {
+                    t.setDescription(task.getDescription());
+                    t.setCompleted(task.getCompleted());
+                    return this.repository.save(t);
+                });
+    }
+
+    @Transactional
+    public Mono<Void> deleteTask(final int id){
+        return this.repository.findById(id)
+                .flatMap(this.repository::delete);
     }
 }

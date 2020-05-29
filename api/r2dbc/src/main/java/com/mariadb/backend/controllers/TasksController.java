@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import com.mariadb.backend.models.Task;
 import com.mariadb.backend.services.TaskService;
@@ -26,32 +27,29 @@ public class TasksController {
 
     @GetMapping()
     public ResponseEntity<Flux<Task>> get() {
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(this.service.getAllTasks());
     }
 
     @PostMapping()
-    public ResponseEntity<String> post(@RequestBody Task task) {
+    public ResponseEntity<Mono<Task>> post(@RequestBody Task task) {
         if (service.isValid(task)) {
-            service.save(task);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(this.service.createTask(task));
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
     @PutMapping()
-    public ResponseEntity<String> put(@RequestBody Task task) {
+    public ResponseEntity<Mono<Task>> put(@RequestBody Task task) {
         if (service.isValid(task)) {
-            service.save(task);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(this.service.updateTask(task));
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
     @DeleteMapping()
-    public ResponseEntity<String> delete(@RequestParam int id) {
+    public ResponseEntity<Mono<Void>> delete(@RequestParam int id) {
         if (id > 0) {
-            service.delete(id);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(this.service.deleteTask(id));
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }

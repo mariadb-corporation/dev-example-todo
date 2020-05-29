@@ -17,7 +17,7 @@ This sample was created using the following techologies and they must be install
 
 ### Configure the code <a name="configure-code"></a>
 
-Configure the MariaDB connection by [adding a db.properties file to the Java project](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) called "db.properties" into the [resources folder](src/main/resources).
+Configure the MariaDB connection by [adding a db.properties file to the Java project](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) called "db.properties" into a folder called `static` that lives within the [resources folder](src/main/resources).
 
 Example implementation:
 
@@ -32,7 +32,7 @@ clientSslCert=classpath:static/skysql_chain.pem
 
 **Configuring MariaDBClient.java**
 
-The (database) environmental variables from `db.properties` are used within the [MariaDBClient.java](src/main/java/MariaDBClient.java) for the MariaDB R2DBC Connector configuration settings:
+The (database) environmental variables from `db.properties` (located in resources/static/) are used within the [R2DBCConfig.java](src/main/java/com/mariadb/backend/config/R2DBCConfig.java) for the MariaDB R2DBC Connector configuration settings:
 
 ```java
 conf = MariadbConnectionConfiguration.builder()
@@ -44,22 +44,28 @@ conf = MariadbConnectionConfiguration.builder()
                     .build();
 ```
 
-**Configuring MariaDBClient.java for the MariaDB cloud database service [SkySQL](https://mariadb.com/products/skysql/)**
+**Configuring [R2DBCConfig.java](src/main/java/com/mariadb/backend/config/R2DBCConfig.java) for the MariaDB cloud database service [SkySQL](https://mariadb.com/products/skysql/)**
 
 MariaDB SkySQL requires SSL additions to connection. 
 
 ```java
-conf = MariadbConnectionConfiguration.builder()
-                    .host(props.getProperty("host"))
-                    .port(Integer.parseInt(props.getProperty("port")))
-                    .username(props.getProperty("username"))
-                    .password(props.getProperty("password"))
-                    .database(props.getProperty("database"))
-                    // Add the following for SkySQL connections *****
-                    .sslMode(SslMode.ENABLE_TRUST)
-                    .clientSslCert(props.getProperty("clientSslCert"))
-                    // **********************************************
-                    .build();
+MariadbConnectionConfiguration.builder()
+    .host(props.getProperty("host"))
+    .port(Integer.parseInt(props.getProperty("port")))
+    .username(props.getProperty("username"))
+    .password(props.getProperty("password"))
+    .database(props.getProperty("database"))
+    // Add the following ***************************** 
+    .sslMode(SslMode.ENABLE_TRUST)
+    .clientSslCert(props.getProperty("clientSslCert"))
+    // ***********************************************
+    .build()
+```
+
+Also, remember to add the following to the db.properties (located in resources/static/) file:
+
+```
+clientSslCert=classpath:static/skysql_chain.pem
 ```
 
 ### Build the code <a name="build-code"></a>
