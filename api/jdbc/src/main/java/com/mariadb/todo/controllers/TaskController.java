@@ -1,4 +1,7 @@
-package com.mariadb.backend.controllers;
+package com.mariadb.todo.controllers;
+
+import com.mariadb.todo.domain.Task;
+import com.mariadb.todo.services.TaskService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,26 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
-import com.mariadb.backend.models.Task;
-import com.mariadb.backend.services.TaskService;
-
 @RestController
 @RequestMapping("/api/tasks")
-public class TasksController {
+public class TaskController {
 
     @Autowired
     private TaskService service;
 
     @GetMapping()
-    public ResponseEntity<Flux<Task>> get() {
+    public ResponseEntity<Iterable<Task>> get() {
         return ResponseEntity.ok(this.service.getAllTasks());
     }
 
     @PostMapping()
-    public ResponseEntity<Mono<Task>> post(@RequestBody Task task) {
+    public ResponseEntity<Task> post(@RequestBody Task task) {
         if (service.isValid(task)) {
             return ResponseEntity.ok(this.service.createTask(task));
         }
@@ -39,7 +36,7 @@ public class TasksController {
     }
 
     @PutMapping()
-    public ResponseEntity<Mono<Task>> put(@RequestBody Task task) {
+    public ResponseEntity<Task> put(@RequestBody Task task) {
         if (service.isValid(task)) {
             return ResponseEntity.ok(this.service.updateTask(task));
         }
@@ -47,9 +44,10 @@ public class TasksController {
     }
 
     @DeleteMapping()
-    public ResponseEntity<Mono<Void>> delete(@RequestParam int id) {
+    public ResponseEntity<Void> delete(@RequestParam int id) {
         if (id > 0) {
-            return ResponseEntity.ok(this.service.deleteTask(id));
+            this.service.deleteTask(id);
+            return ResponseEntity.ok().build();
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }

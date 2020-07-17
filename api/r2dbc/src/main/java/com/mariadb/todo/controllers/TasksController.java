@@ -1,4 +1,7 @@
-package com.mariadb.backend.controllers;
+package com.mariadb.todo.controllers;
+
+import com.mariadb.todo.models.Task;
+import com.mariadb.todo.services.TaskService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-import com.mariadb.backend.models.Task;
-import com.mariadb.backend.services.TaskService;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -25,33 +26,30 @@ public class TasksController {
     private TaskService service;
 
     @GetMapping()
-    public ResponseEntity<List<Task>> get() {
-        return ResponseEntity.ok(service.getAll());
+    public ResponseEntity<Flux<Task>> get() {
+        return ResponseEntity.ok(this.service.getAllTasks());
     }
 
     @PostMapping()
-    public ResponseEntity<String> post(@RequestBody Task task) {
+    public ResponseEntity<Mono<Task>> post(@RequestBody Task task) {
         if (service.isValid(task)) {
-            service.save(task);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(this.service.createTask(task));
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
     @PutMapping()
-    public ResponseEntity<String> put(@RequestBody Task task) {
+    public ResponseEntity<Mono<Task>> put(@RequestBody Task task) {
         if (service.isValid(task)) {
-            service.save(task);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(this.service.updateTask(task));
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
     @DeleteMapping()
-    public ResponseEntity<String> delete(@RequestParam int id) {
+    public ResponseEntity<Mono<Void>> delete(@RequestParam int id) {
         if (id > 0) {
-            service.delete(id);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(this.service.deleteTask(id));
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }

@@ -1,4 +1,4 @@
-package com.mariadb.backend.config;
+package com.mariadb.todo.config;
 
 import org.mariadb.r2dbc.MariadbConnectionConfiguration;
 import org.mariadb.r2dbc.MariadbConnectionFactory;
@@ -15,7 +15,6 @@ import java.util.Properties;
 @Configuration
 @EnableR2dbcRepositories
 public class R2DBCConfig extends AbstractR2dbcConfiguration {
-
     @Override
     @Bean
     public MariadbConnectionFactory connectionFactory() {
@@ -40,5 +39,4 @@ public class R2DBCConfig extends AbstractR2dbcConfiguration {
             return null;
         }
     }
-    
 }
