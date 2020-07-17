@@ -55,7 +55,7 @@ A virtual environment is a directory tree which contains Python executable files
 Creation of [virtual environments](https://docs.python.org/3/library/venv.html?ref=hackernoon.com#venv-def) is done by executing the following command:
 
 ```
-$ python3 -m venv .
+$ python3 -m venv venv
 ```
 
 **Tip**: Tip: pyvenv is only available in Python 3.4 or later. For older versions please use the [virtualenv](https://virtualenv.pypa.io/en/latest/) tool. 
