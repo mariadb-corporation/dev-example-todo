@@ -2,9 +2,11 @@
 var mariadb = require('mariadb');
 require('dotenv').config();
 
-// Retrieve the Certificate Authority chain file (using the File System package)
-const fs = require("fs");
-const serverCert = [fs.readFileSync("skysql_chain.pem", "utf8")];
+// 1.) Access the Node File System package
+//const fs = require("fs");
+
+// 2.) Retrieve the Certificate Authority chain file (wherever you placed it - notice it's just in the Node project root here)
+//const serverCert = [fs.readFileSync("skysql_chain.pem", "utf8")];
 
 // Create a connection pool
 var pool = 
@@ -14,11 +16,13 @@ var pool =
     password: process.env.DB_PASS,
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
-    multipleStatements: true,
     connectionLimit: 5,
+    // 3.) Add an "ssl" property to the connection pool configuration, using the serverCert const defined above
+    /*
     ssl: {
       ca: serverCert
     }
+    */
   });
 
 // Expose a method to establish connection with MariaDB SkySQL
