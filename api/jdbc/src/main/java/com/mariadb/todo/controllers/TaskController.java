@@ -22,11 +22,13 @@ public class TaskController {
     @Autowired
     private TaskService service;
 
+    // Get all tasks
     @GetMapping()
     public ResponseEntity<Iterable<Task>> get() {
         return ResponseEntity.ok(this.service.getAllTasks());
     }
 
+    // Create a new task
     @PostMapping()
     public ResponseEntity<Task> post(@RequestBody Task task) {
         if (service.isValid(task)) {
@@ -35,6 +37,7 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
+    // Update a task
     @PutMapping()
     public ResponseEntity<Task> put(@RequestBody Task task) {
         if (service.isValid(task)) {
@@ -43,6 +46,7 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
+    // Delete a task
     @DeleteMapping()
     public ResponseEntity<Void> delete(@RequestParam int id) {
         if (id > 0) {
