@@ -36,7 +36,7 @@ This sample application, no matter which API project you target, will requires t
 
 ### MariaDB Platform <a name="platform"></a>
 
-[MariaDB Platform](https://mariadb.com/products/mariadb-platform/) integrates the former [MariaDB TX (transactions)](https://mariadb.com/products/mariadb-platform-transactional/) and [MariaDB AX (analytics)](https://mariadb.com/products/mariadb-platform-analytical/) products so developers can build modern applications by enriching transactions with real-time analytics and historical data, creating insightful experiences and compelling opportunities for customers – and for businesses, endless ways to monetize data. It’s the only enterprise open source database built for modern applications running in the cloud.
+[MariaDB Platform](https://mariadb.com/products/mariadb-platform/) integrates [transactional](https://mariadb.com/products/mariadb-platform-transactional/) and [analytical](https://mariadb.com/products/mariadb-platform-analytical/) products so developers can build modern applications by enriching transactions with real-time analytics and historical data, creating insightful experiences and compelling opportunities for customers – and for businesses, endless ways to monetize data. 
 
 <p align="center" spacing="10">
     <kbd>
@@ -44,7 +44,11 @@ This sample application, no matter which API project you target, will requires t
     </kbd>
 </p>
 
-To download and deploy MariaDB check out the instructions [here](https://mariadb.com/docs/deploy/installation/). You can also make use of the [MariaDB image available on Docker Hub](https://hub.docker.com/_/mariadb).
+To get started using MariaDB locally you can choose one of the following options:
+
+* [Download and install MariaDB (Community or Enterprise) directly from mariadb.com](https://mariadb.com/docs/deploy/installation/) 
+
+* [Download and install MariaDB using the official MariaDB Community Server 10.5 Docker Image available at hub.docker.com](https://hub.docker.com/r/mariadb/columnstore)
 
 ### MariaDB SkySQL <a name="skysql">
 
