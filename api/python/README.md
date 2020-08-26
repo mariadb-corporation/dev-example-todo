@@ -79,8 +79,7 @@ This app also uses the MariaDB Python Connector to connect to and communicate wi
 Install the necessary packages.
 
 ```bash
-$ pip3 install flask
-$ pip3 install mariadb
+$ pip3 install flask mariadb python-dotenv
 ```
 
 ### Run the app <a name="run-app"></a>
