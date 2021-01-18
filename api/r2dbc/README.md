@@ -17,55 +17,17 @@ This sample was created using the following techologies and they must be install
 
 ### Configure the code <a name="configure-code"></a>
 
-Configure the MariaDB connection by [adding a db.properties file to the Java project](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) called "db.properties" into a folder called `static` that lives within the [resources folder](src/main/resources).
+Configure the MariaDB connection by [changing a application.properties file to the Java project](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) from the folder [resources folder](src/main/resources).
 
 Example implementation:
 
 ```
-host=sky000XXX.mdb000XXXX.db.skysql.net
-port=5002
-username=DB0000XXXX
-password=*************
-database=todo
-clientSslCert=classpath:static/skysql_chain.pem
-```
-
-**Configuring MariaDBClient.java**
-
-The (database) environmental variables from `db.properties` (located in resources/static/) are used within the [R2DBCConfig.java](src/main/java/com/mariadb/backend/config/R2DBCConfig.java) for the MariaDB R2DBC Connector configuration settings:
-
-```java
-conf = MariadbConnectionConfiguration.builder()
-                    .host(props.getProperty("host"))
-                    .port(Integer.parseInt(props.getProperty("port")))
-                    .username(props.getProperty("username"))
-                    .password(props.getProperty("password"))
-                    .database(props.getProperty("database"))
-                    .build();
-```
-
-**Configuring [R2DBCConfig.java](src/main/java/com/mariadb/backend/config/R2DBCConfig.java) for the MariaDB cloud database service [SkySQL](https://mariadb.com/products/skysql/)**
-
-MariaDB SkySQL requires SSL additions to connection. 
-
-```java
-MariadbConnectionConfiguration.builder()
-    .host(props.getProperty("host"))
-    .port(Integer.parseInt(props.getProperty("port")))
-    .username(props.getProperty("username"))
-    .password(props.getProperty("password"))
-    .database(props.getProperty("database"))
-    // Add the following ***************************** 
-    .sslMode(SslMode.ENABLE_TRUST)
-    .clientSslCert(props.getProperty("clientSslCert"))
-    // ***********************************************
-    .build()
-```
-
-Also, remember to add the following to the db.properties (located in resources/static/) file:
-
-```
-clientSslCert=classpath:static/skysql_chain.pem
+spring.r2dbc.url=r2dbc:mariadb://sky000XXX.mdb000XXXX.db.skysql.net:5002/todo?sslMode=ENABLE_TRUST
+spring.r2dbc.username=DB0000XXXX
+spring.r2dbc.password=*************
+spring.r2dbc.pool.initial-size=5
+spring.r2dbc.pool.max-size=10
+spring.r2dbc.pool.max-idle-time=30m
 ```
 
 ### Build the code <a name="build-code"></a>
@@ -93,6 +55,7 @@ The following steps also exist within the ["Build and run"](../../#build-and-run
 2. Navigate to the [../../client](client) folder and execute the following CLI command to start the React.js application.
 
 ```bash 
+$ npm install
 $ npm start
 ```
 
