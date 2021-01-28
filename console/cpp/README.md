@@ -10,7 +10,7 @@ This sample was created using the following techologies and they must be install
 
 ## Configure the code <a name="configure-code"></a>
 
-Within the [tasks.cpp](tasks.cpp) file, navigate to the `main` method and add your database connection values.
+[Within the tasks.cpp file](https://github.com/mariadb-corporation/dev-example-todo/blob/master/console/cpp/tasks.cpp#L81-L82), navigate to the `main` method and add your database connection values.
 
 Example implementation:
 
