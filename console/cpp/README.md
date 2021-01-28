@@ -1,6 +1,6 @@
 # TODO - C++ Console Application
 
-The [task.cpp](task.cpp) file can be used (via C++ compiler) to build an executable that can perform create-read-update-delete (CRUD) operations on a target MariaDB database using MariaDB's C++ connector.
+The [tasks.cpp](tasks.cpp) file can be used (via C++ compiler) to build an executable that can perform create-read-update-delete (CRUD) operations on a target MariaDB database using MariaDB's C++ connector.
 
 ## Requirements <a name="requirements"></a>
 
