@@ -1,12 +1,11 @@
-#include <string.h>
 #include <iostream>
-#include <mariadbcpp/ConnCpp.h>
+#include <mariadb/conncpp.hpp>
 
 // Delete a task record (indicated by id)
-void deleteTask(std::shared_ptr<sql::Connection> &conn, int id) {
+void deleteTask(std::unique_ptr<sql::Connection> &conn, int id) {
     try {
         // Create a new PreparedStatement
-        std::shared_ptr<sql::PreparedStatement> stmnt(conn->prepareStatement("delete from tasks where id = ?"));
+        std::unique_ptr<sql::PreparedStatement> stmnt(conn->prepareStatement("delete from tasks where id = ?"));
         // Bind values to SQL statement
         stmnt->setInt(1, id);
         // Execute query
@@ -18,10 +17,10 @@ void deleteTask(std::shared_ptr<sql::Connection> &conn, int id) {
 }
 
 // Update the completed value of a task record (indicated by id)
-void updateTaskStatus(std::shared_ptr<sql::Connection> &conn, int id, bool completed) {
+void updateTaskStatus(std::unique_ptr<sql::Connection> &conn, int id, bool completed) {
     try {
         // Create a new PreparedStatement
-        std::shared_ptr<sql::PreparedStatement> stmnt(conn->prepareStatement("update tasks set completed = ? where id = ?"));
+        std::unique_ptr<sql::PreparedStatement> stmnt(conn->prepareStatement("update tasks set completed = ? where id = ?"));
         // Bind values to SQL statement
         stmnt->setBoolean(1, completed);
         stmnt->setInt(2, id);
@@ -34,10 +33,10 @@ void updateTaskStatus(std::shared_ptr<sql::Connection> &conn, int id, bool compl
 }
 
 // Create a new task record
-void addTask(std::shared_ptr<sql::Connection> &conn, std::string description) {
+void addTask(std::unique_ptr<sql::Connection> &conn, std::string description) {
     try {
         // Create a new PreparedStatement
-        std::shared_ptr<sql::PreparedStatement> stmnt(conn->prepareStatement("insert into tasks (description) values (?)"));
+        std::unique_ptr<sql::PreparedStatement> stmnt(conn->prepareStatement("insert into tasks (description) values (?)"));
         // Bind values to SQL statement
         stmnt->setString(1, description);
         // Execute query
@@ -49,10 +48,10 @@ void addTask(std::shared_ptr<sql::Connection> &conn, std::string description) {
 }
 
 // Print all records in tasks table 
-void showTasks(std::shared_ptr<sql::Connection> &conn) {
+void showTasks(std::unique_ptr<sql::Connection> &conn) {
     try {
         // Create a new Statement
-        std::shared_ptr<sql::Statement> stmnt(conn->createStatement());
+        std::unique_ptr<sql::Statement> stmnt(conn->createStatement());
         // Execute query
         sql::ResultSet *res = stmnt->executeQuery("select * from tasks");
         // Loop through and print results
@@ -82,7 +81,7 @@ int main(int argc, char **argv){
             sql::Properties properties({{"user", "app_user"}, {"password", "Password123!"}});
 
             // Establish Connection
-            std::shared_ptr<sql::Connection> conn(driver->connect(url, properties));
+            std::unique_ptr<sql::Connection> conn(driver->connect(url, properties));
 
             // Use arguments to determine execution next steps
             if (!strcmp(argv[1],"showTasks")) {
