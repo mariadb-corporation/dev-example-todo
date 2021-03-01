@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include <mariadb/conncpp.hpp>
 
 // Delete a task record (indicated by id)
