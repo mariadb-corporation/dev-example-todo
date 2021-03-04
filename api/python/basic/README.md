@@ -32,7 +32,7 @@ DB_NAME=todo
 
 **Configuring db.js**
 
-The environmental variables from `.env` are used within [api.py](api.py) for the MariaDB Python Connector connection configuration settings:
+The environmental variables from `.env` are used within [tasks.py](tasks.py) for the MariaDB Python Connector connection configuration settings:
 
 ```python
 config = {
