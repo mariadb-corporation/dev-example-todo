@@ -11,7 +11,7 @@
 
 This sample was created using the following techologies and they must be installed before proceeding.
 
-* [Python (v, 3+)](https://www.python.org/downloads/)
+* [Python (v. 3+)](https://www.python.org/downloads/)
 * [MariaDB Connector/C (v. 3.1.5+)](https://mariadb.com/products/skysql/docs/clients/mariadb-connector-c-for-skysql-services/)
 
 ## Getting started with the app <a name="getting-started"></a>
@@ -32,7 +32,7 @@ DB_NAME=todo
 
 **Configuring db.js**
 
-The environmental variables from `.env` are used within the [db.js](src/db.js) for the MariaDB Node.js Connector configuration pool settings:
+The environmental variables from `.env` are used within [api.py](api.py) for the MariaDB Python Connector connection configuration settings:
 
 ```python
 config = {

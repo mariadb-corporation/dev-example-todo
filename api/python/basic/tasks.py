@@ -17,7 +17,7 @@ config = {
     'user': os.getenv("DB_USER"),
     'password': os.getenv("DB_PASS"),
     'database': os.getenv("DB_NAME"),
-    'ssl': 'True'
+    'ssl': 'False'
 }
 
 @tasks.route('/api/tasks', methods=['GET','POST','PUT','DELETE'])
