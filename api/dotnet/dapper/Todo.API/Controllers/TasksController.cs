@@ -40,7 +40,7 @@ namespace Todo.API.Controllers
             return Ok(result);
         }
 
-        // DELETE api/tasks/5
+        // DELETE api/tasks?id=5
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery]int id)
         {
