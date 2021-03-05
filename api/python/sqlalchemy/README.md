@@ -34,7 +34,7 @@ DB_NAME=todo
 
 **Configuring the connection**
 
-The environmental variables from `.env` are used within [api.py](api.py) to confire the [SQLAlchemy connection engine](https://docs.sqlalchemy.org/en/13/core/connections.html) :
+The environmental variables from `.env` are used within [tasks.py](tasks.py) to confire the [SQLAlchemy connection engine](https://docs.sqlalchemy.org/en/13/core/connections.html) :
 
 ```python
 engine = sqlalchemy.create_engine(
@@ -68,7 +68,7 @@ $ . venv/bin/activate activate
 
 ### Install packages <a name="install-packages"></a>
 
-[Flask](https://flask.palletsprojects.com/en/1.1.x/?ref=hackernoon.com) is a micro web framework written in Python. It is classified as a [microframework](https://en.wikipedia.org/wiki/Microframework) because it does not require particular tools or libraries. 
+[Flask](https://flask.palletsprojects.com/en/1.1.x) is a micro web framework written in Python. It is classified as a [microframework](https://en.wikipedia.org/wiki/Microframework) because it does not require particular tools or libraries. 
 
 **TL;DR** It's what this app uses for the API.
 

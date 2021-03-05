@@ -1,4 +1,4 @@
-# TODO - Node.js API
+# TODO - Node.js API (with Sequelize)
 
 This Node.js project uses the MariaDB Node.js connector in combination with the [Sequelize object-relational mapping module](https://sequelize.org/) to connect to and communicate to a MariaDB database instance.
 
