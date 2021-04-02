@@ -77,10 +77,8 @@ This app also uses the MariaDB Python Connector to connect to and communicate wi
 Install the necessary packages.
 
 ```bash
-$ pip3 install flask mariadb python-dotenv SQLAlchemy==1.4.0b3
+$ pip3 install flask mariadb python-dotenv SQLAlchemy
 ```
-
-**Note**: MariaDB Connector/Python support has been scheduled to release with SQLAlchemy v1.4. Currently, the pre-release PyPi package (v.1.4.0b3) needs to be used.
 
 ### Run the app <a name="run-app"></a>
 
