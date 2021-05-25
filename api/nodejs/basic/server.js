@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors')
 const app = express();
 const port = 8080;
 const path = require('path');
@@ -7,7 +6,6 @@ const bodyParser = require("body-parser");
 
 const tasksRoutes = require("./routes/tasksRoutes");
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
