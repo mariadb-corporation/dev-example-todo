@@ -24,9 +24,7 @@ var pool =
     }*/
   });
 
-// Expose a method to establish connection with MariaDB SkySQL
-module.exports={
-  getConnection: async function() {
-    return pool.getConnection();
-  }
-} 
+// Expose the Pool object within this module
+module.exports = Object.freeze({
+  pool: pool
+});
