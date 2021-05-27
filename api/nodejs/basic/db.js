@@ -26,7 +26,7 @@ var pool =
 
 // Expose a method to establish connection with MariaDB SkySQL
 module.exports={
-  getConnection: async function(){
-    return pool.getConnection()
+  getConnection: async function() {
+    return pool.getConnection();
   }
 } 
