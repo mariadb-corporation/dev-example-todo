@@ -103,6 +103,7 @@ This application is made of two parts:
         - [JDBC](api/jdbc)
         - [Python](api/python)
         - [R2DBC](api/r2dbc)
+        - [.NET (C#)](api/dotnet/dapper) (uses a third-party, open-source MySQL connector)
 
 See the README's in [client](client/README.md) and [api](api/README.md) for more information on how to get started!
 
