@@ -46,9 +46,9 @@ This sample application, no matter which API project you target, will requires t
 
 To get started using MariaDB locally you can choose one of the following options:
 
-* [Download and install MariaDB (Community or Enterprise) directly from mariadb.com](https://mariadb.com/docs/deploy/installation/) 
+* [Download and install MariaDB (Community or Enterprise) directly from mariadb.com](https://mariadb.com/downloads) 
 
-* [Download and install MariaDB using the official MariaDB Community Server 10.5 Docker Image available at hub.docker.com](https://hub.docker.com/r/mariadb/columnstore)
+* [Download and install MariaDB using the official MariaDB Community Server 10.6 Docker Image available at hub.docker.com](https://hub.docker.com/_/mariadb)
 
 ### MariaDB SkySQL <a name="skysql">
 
