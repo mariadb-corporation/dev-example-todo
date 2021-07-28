@@ -54,7 +54,7 @@ To get started using MariaDB locally you can choose one of the following options
 
 [SkySQL](https://mariadb.com/products/skysql/) is the first and only database-as-a-service (DBaaS) to bring the full power of MariaDB Platform to the cloud, including its support for transactional, analytical and hybrid workloads. Built on Kubernetes, and optimized for cloud infrastructure and services, SkySQL combines ease of use and self-service with enterprise reliability and world-class support – everything needed to safely run mission-critical databases in the cloud, and with enterprise governance.
 
-[Get started with SkySQL!](https://mariadb.com/products/skysql/#get-started)
+[Get started with SkySQL!](https://mariadb.com/skyview)
 
 <p align="center" spacing="10">
     <kbd>
