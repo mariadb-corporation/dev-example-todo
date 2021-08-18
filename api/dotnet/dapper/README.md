@@ -1,6 +1,6 @@
 # TODO - .NET/C# (with Dapper + MySQLConnector)
 
-This .NET solution uses the [MySQLConnector](https://github.com/mysql-net/MySqlConnector) in combination with the [Dapper](https://stackexchange.github.io/Dapper/) Object Mapping library to connect to and communicate to a MariaDB database instance.
+This .NET solution uses the [MySQLConnector](https://github.com/mysql-net/MySqlConnector) in combination with the [Dapper](https://dapperlib.github.io/Dapper/) Object Mapping library to connect to and communicate to a MariaDB database instance.
 
 1. [Requirements](#requirements)
 2. [Getting started with the app](#getting-started)
