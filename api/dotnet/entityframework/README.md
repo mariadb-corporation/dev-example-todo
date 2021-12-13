@@ -1,4 +1,4 @@
-# TODO - .NET/C# (with Dapper + MySQLConnector)
+# TODO - .NET/C# (with Entity Framework & MySQLConnector)
 
 This .NET solution uses [MySqlConnector](https://github.com/mysql-net/MySqlConnector) in combination with the [Pomelo.EntityFramework.Core](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql) and [Entity Framework](https://docs.microsoft.com/en-us/ef/) Object Mapping library to connect to and communicate to a MariaDB database instance.
 
