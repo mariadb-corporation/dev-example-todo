@@ -14,10 +14,8 @@ This README will walk you through the steps for getting the TODO web application
 
 # Table of Contents
 1. [Requirements](#requirements)
-2. [Introduction to MariaDB](#introduction)
-    1. [MariaDB Platform](#platform)
-    2. [MariaDB SkySQL](#skysql)
-3. [Getting started](#get-started)
+2. [Getting started with MariaDB](#introduction)
+3. [Getting started with the app](#get-started)
     1. [Get the code](#code)
     2. [Create the schema](#schema)
     3. [Anatomy of the app](#app)
