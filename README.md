@@ -34,33 +34,9 @@ This sample application, no matter which API project you target, will requires t
 
 ## Introduction to MariaDB <a name="introduction"></a>
 
-### MariaDB Platform <a name="platform"></a>
+[MariaDB](https://mariadb.com) is a community-developed, commercially supported relational database management system, and the database you'll be using for this application.
 
-[MariaDB Platform](https://mariadb.com/products/mariadb-platform/) integrates [transactional](https://mariadb.com/products/mariadb-platform-transactional/) and [analytical](https://mariadb.com/products/mariadb-platform-analytical/) products so developers can build modern applications by enriching transactions with real-time analytics and historical data, creating insightful experiences and compelling opportunities for customers – and for businesses, endless ways to monetize data. 
-
-<p align="center" spacing="10">
-    <kbd>
-        <img src="media/platform.png" />
-    </kbd>
-</p>
-
-To get started using MariaDB locally you can choose one of the following options:
-
-* [Download and install MariaDB (Community or Enterprise) directly from mariadb.com](https://mariadb.com/downloads) 
-
-* [Download and install MariaDB using the official MariaDB Community Server 10.6 Docker Image available at hub.docker.com](https://hub.docker.com/_/mariadb)
-
-### MariaDB SkySQL <a name="skysql">
-
-[SkySQL](https://mariadb.com/products/skysql/) is the first and only database-as-a-service (DBaaS) to bring the full power of MariaDB Platform to the cloud, including its support for transactional, analytical and hybrid workloads. Built on Kubernetes, and optimized for cloud infrastructure and services, SkySQL combines ease of use and self-service with enterprise reliability and world-class support – everything needed to safely run mission-critical databases in the cloud, and with enterprise governance.
-
-[Get started with SkySQL!](https://mariadb.com/skyview)
-
-<p align="center" spacing="10">
-    <kbd>
-        <img src="media/skysql.png" />
-    </kbd>
-</p>
+If you don't have a MariaDB database up and running you can find more information on how to download, install and start using a MariaDB database in the [MariaDB Quickstart Guide](https://github.com/mariadb-developers/mariadb-getting-started).
 
 ## Get started <a name="get-started"></a>
 
@@ -125,9 +101,17 @@ $ npm start
 
 ## Support and Contribution <a name="support-contribution"></a>
 
-Thanks so much for taking a look at the TODO app! As this is a very simple example, there's plenty of potential for customization. Please feel free to submit PR's to the project to include your modifications!
+Please feel free to submit PR's, issues or requests to this project project or projects within the [official MariaDB Corporation GitHub organization](https://github.com/mariadb-corporation).
 
-If you have any questions, comments, or would like to contribute to this or future projects like this please reach out to us directly at [developers@mariadb.com](mailto:developers@mariadb.com) or on [Twitter](https://twitter.com/mariadb).
+If you have any other questions, comments, or looking for more information on MariaDB please check out:
+
+* [MariaDB Developer Hub](https://mariadb.com/developers)
+* [MariaDB Community Slack](https://r.mariadb.com/join-community-slack)
+
+Or reach out to us diretly via:
+
+* [developers@mariadb.com](mailto:developers@mariadb.com)
+* [MariaDB Twitter](https://twitter.com/mariadb)
 
 ## License <a name="license"></a>
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=plastic)](https://opensource.org/licenses/MIT)
