@@ -1,5 +1,19 @@
 # TODO
 
+⚠️⚠️⚠️ <br /><br />
+**[UNMAINTAINED]** <br /> This repository has been split up (by back-end language), moved and is currently maintained at the following locations:
+* [Node.js (basic)](https://github.com/mariadb-developers/todo-app-nodejs)
+* [Node.js (Sequelize)](https://github.com/mariadb-developers/todo-app-nodejs-sequelize)
+* [Python (basic)](https://github.com/mariadb-developers/todo-app-python)
+* [Python (SQLAlchemy)](https://github.com/mariadb-developers/todo-app-python-sqlalchemy)
+* [JDBC (Spring Data)](https://github.com/mariadb-developers/todo-app-jdbc-spring)
+* [R2DBC (Spring Data)](https://github.com/mariadb-developers/todo-app-r2dbc-spring)
+* [C# (Dapper)](https://github.com/mariadb-developers/todo-app-dotnet-dapper)
+* [C# (Entity Framework)](https://github.com/mariadb-developers/todo-app-dotnet-entityframework)
+<br />
+⚠️⚠️⚠️ 
+<br /><br /> 
+
 **TODO** is a web application that introduces you to the power, performance, and simplicity of [MariaDB](https://mariadb.com/products/).
 
 <p align="center" spacing="10">
