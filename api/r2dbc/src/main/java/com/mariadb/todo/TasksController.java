@@ -1,9 +1,5 @@
-package com.mariadb.todo.controllers;
+package com.mariadb.todo;
 
-import com.mariadb.todo.models.Task;
-import com.mariadb.todo.services.TaskService;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,22 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/tasks")
+@RequiredArgsConstructor // Creates a constructor that accepts references to the final properties of this class
 public class TasksController {
 
-    @Autowired
-    private TaskService service;
+    private final TaskService service;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<Flux<Task>> get() {
         return ResponseEntity.ok(this.service.getAllTasks());
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Mono<Task>> post(@RequestBody Task task) {
         if (service.isValid(task)) {
             return ResponseEntity.ok(this.service.createTask(task));
@@ -38,7 +35,7 @@ public class TasksController {
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
-    @PutMapping()
+    @PutMapping
     public ResponseEntity<Mono<Task>> put(@RequestBody Task task) {
         if (service.isValid(task)) {
             return ResponseEntity.ok(this.service.updateTask(task));
@@ -46,7 +43,7 @@ public class TasksController {
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
-    @DeleteMapping()
+    @DeleteMapping
     public ResponseEntity<Mono<Void>> delete(@RequestParam int id) {
         if (id > 0) {
             return ResponseEntity.ok(this.service.deleteTask(id));

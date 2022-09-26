@@ -1,10 +1,11 @@
 # TODO - Java Spring Boot (with R2DBC) API
 
-1. [Requirements](#requirements)
-2. [Getting started with the app](#getting-started)
-    1. [Configure the code](#configure-code)
-    2. [Build the code](#build-code)
-    3. [Run the app](#run-app)
+- [TODO - Java Spring Boot (with R2DBC) API](#todo---java-spring-boot-with-r2dbc-api)
+	- [Requirements <a name="requirements"></a>](#requirements-)
+	- [Getting started with the app <a name="getting-started"></a>](#getting-started-with-the-app-)
+		- [Configure the code <a name="configure-code"></a>](#configure-the-code-)
+		- [Build the code <a name="build-code"></a>](#build-the-code-)
+		- [Run the app <a name="run-app"></a>](#run-the-app-)
 
 ## Requirements <a name="requirements"></a>
 
@@ -17,17 +18,16 @@ This sample was created using the following techologies and they must be install
 
 ### Configure the code <a name="configure-code"></a>
 
-Configure the MariaDB connection by [changing a application.properties file to the Java project](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) from the folder [resources folder](src/main/resources).
+Configure the MariaDB connection by [changing the application.properties file](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html) from the folder [resources folder](src/main/resources).
 
 Example implementation:
 
 ```
-spring.r2dbc.url=r2dbc:mariadb://sky000XXX.mdb000XXXX.db.skysql.net:5002/todo?sslMode=ENABLE_TRUST
-spring.r2dbc.username=DB0000XXXX
-spring.r2dbc.password=*************
-spring.r2dbc.pool.initial-size=5
-spring.r2dbc.pool.max-size=10
-spring.r2dbc.pool.max-idle-time=30m
+spring.r2dbc.url=r2dbc:mariadb://example.skysql.net:5001/todo
+spring.r2dbc.username=DB00000001
+spring.r2dbc.password=****************
+spring.r2dbc.properties.sslMode=VERIFY_CA
+spring.r2dbc.properties.serverSslCert=classpath:static/skysql_chain.pem
 ```
 
 ### Build the code <a name="build-code"></a>
@@ -47,7 +47,7 @@ Once you've pulled down the code and have verified built the project you're read
 1. Execute the following CLI command 
 
 ```bash
-$ mvn spring-boot:run
+$ java -jar target/todo-r2dbc.jar
 ```
 
 The following steps also exist within the ["Build and run"](../../#build-and-run-the-app-) section of the root README, and are for startin the React.js project once this API project has been started.

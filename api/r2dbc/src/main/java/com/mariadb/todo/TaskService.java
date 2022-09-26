@@ -1,29 +1,22 @@
-package com.mariadb.todo.services;
+package com.mariadb.todo;
 
-import com.mariadb.todo.models.Task;
-import com.mariadb.todo.repositories.TasksRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 // Registered as a Spring Service (Component)
 @Service
+@RequiredArgsConstructor // Creates a constructor that accepts references to the final properties of this class
 public class TaskService {
     
-    // Automatically instantiate (via Spring IoC) 
-    @Autowired
-    private TasksRepository repository;
+    // Automatically instantiated (via Spring IoC) 
+    private final TasksRepository repository;
 
     // 
     public Boolean isValid(final Task task) {
-        if (task != null && !task.getDescription().isEmpty()) {
-            return true;
-        }
-        return false;
+        return task != null && !task.getDescription().isEmpty();
     }
 
     // Get all records from the tasks table
@@ -37,7 +30,6 @@ public class TaskService {
     }
 
     // Update an existing task record
-    @Transactional
     public Mono<Task> updateTask(final Task task) {
         return this.repository.findById(task.getId())
                 .flatMap(t -> {
@@ -48,7 +40,6 @@ public class TaskService {
     }
 
     // Delete the task record by specified id
-    @Transactional
     public Mono<Void> deleteTask(final int id){
         return this.repository.findById(id)
                 .flatMap(this.repository::delete);
